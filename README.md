@@ -2,6 +2,8 @@
 
 # The project running live: https://react-films-appi.netlify.app/
 
+# APP repository: https://github.com/RafaRJimenez/movies-api
+
 # To install the project:
 
 # Run "npm install" in the root of the project
