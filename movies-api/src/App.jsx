@@ -1,4 +1,3 @@
-
 import './App.css'
 import { useMovies } from './hooks/useMovies'
 import { Movies } from './components/Movies'
@@ -14,22 +13,21 @@ function useSearch() {
   useEffect(() => {
     if (isFirstInput.current) {
       isFirstInput.current = search === ""
-      console.log(isFirstInput)
       return
     }
 
     if (search === ""){
-      setError("no se puede buscar una pelicula vacia")
+      setError("El campo de búsqueda está vacío")
       return
     }
 
     if (search.length < 3) {
-      setError("la búsqueda debe tener al menos 3 caracteres")
+      setError("La búsqueda debe tener al menos 3 caracteres")
       return
     } 
 
     if (search.match(/^\d+$/)) {
-      setError("no se puede buscar una película con un número")
+      setError("No se puede buscar una película con un número")
       return
     } 
 
@@ -51,8 +49,6 @@ function App() {
     , [getMovies]
   )
   
-
-
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies({search})
@@ -76,8 +72,8 @@ function App() {
         <h1>Buscador de películas</h1>
         <form className='form' onSubmit={handleSubmit}>
           <input style={{ border: '1px solid transparent', borderColor: error ? "red": "transparent"}} onChange={handleChange} value= {search} name ="query" placeholder='Avengers, Star Wars, The matrix...'/>
-          <input type="checkbox" onChange={handleSort} checked={sort} />
           <button type='submit'>Buscar</button>
+         <input type="checkbox" onChange={handleSort} checked={sort}/><span>Ordenar A-Z</span>
         </form>
         {error && <p className='error'>{error}</p>}
       </header>
